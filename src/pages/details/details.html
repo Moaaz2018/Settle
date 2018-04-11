@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{estateList.Title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div>  
+        <div *ngFor="let p of profileList">
+            <div *ngIf="p.UID==estateList.UID"  >
+              <div (click)="goToprofileuser(p.UID)">
+             <img class="imgowner" height="30px" width="30px"[src]="p.image">
+             <p class="nameowner">{{p.firstName}} {{p.lastName}}</p>
+            </div>
+            </div>
+           </div>
+        <img height="80px" width="300px" [src]="estateList.Image" >
+      <h2>Estate name: {{estateList.Description}}</h2>    
+      <h2>Price : {{estateList.Price}} </h2>
+      <h2>{{estateList.Location.Latitude}}</h2>
+    </div>
+     
+</ion-content>

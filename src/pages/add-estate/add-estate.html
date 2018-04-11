@@ -1,0 +1,144 @@
+
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Add a New Estate</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list radio-group [(ngModel)]="CurrentEstate.EstateType">
+
+        <ion-list-header>Type Of Estate</ion-list-header>
+      
+        <ion-item>
+          <ion-label>Flat for sale</ion-label>
+          <ion-radio value="flat buy" ></ion-radio>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Flat for rent</ion-label>
+          <ion-radio value="flat rent" ></ion-radio>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>Shop for sale</ion-label>
+          <ion-radio value="shop buy" ></ion-radio>
+        </ion-item> 
+
+        <ion-item>
+          <ion-label>Shop for rent</ion-label>
+          <ion-radio value="shop rent" ></ion-radio>
+        </ion-item> 
+
+
+      </ion-list>
+
+       
+
+      <ion-item>
+        <ion-label fixed>Title</ion-label>
+        <ion-input type="text" [(ngModel)]="CurrentEstate.Title"></ion-input>
+      </ion-item>
+
+  <ion-item>
+    <ion-label fixed>Address</ion-label>
+    <ion-input type="text" [(ngModel)]="CurrentEstate.Address"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+  <ion-label fixed>Price</ion-label>
+  <ion-input type="text" [(ngModel)]="CurrentEstate.Price"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea [(ngModel)]="CurrentEstate.Description" ></ion-textarea>
+    </ion-item>
+
+    <ion-grid>
+        <h2 *ngIf="!LocationSet" >Choose Location</h2>
+
+      <ion-row>
+
+         <ion-col col-6>
+
+           <button ion-button block outline icon-left (click)="GetLocation()">
+             <ion-icon name="locate"></ion-icon>
+             Locate Estate
+           </button>
+         </ion-col>
+         <ion-col col-6>
+             <button ion-button block outline icon-left (click)="SetOnMap()">
+               <ion-icon name="map"></ion-icon>
+               Use The Map
+             </button>
+           </ion-col>
+       </ion-row>
+       <ion-row>
+         <ion-col text-center>
+           <agm-map *ngIf="LocationSet"
+           [latitude]="BaseLocation.Latitude"
+           [longitude]="BaseLocation.Longitude"
+           [zoom]="15" 
+         >
+ 
+              <agm-marker 
+           [latitude]="BaseLocation.Latitude"
+           [longitude]="BaseLocation.Longitude">
+          
+          </agm-marker>
+ </agm-map>
+
+         </ion-col>
+       </ion-row>
+       <h2 *ngIf="ImagePath==''">Attach a photo</h2>
+
+         <ion-row>
+            <ion-col text-center>
+            </ion-col>
+          </ion-row>
+       <ion-row>
+           <ion-col col-6>
+             <button ion-button block outline icon-left (click)="TakePhoto()">
+               <ion-icon name="camera"></ion-icon>
+               Camera
+             </button>
+           </ion-col>
+   
+           <ion-col col-6>
+               <button ion-button block outline icon-left (click)="OpenGallery()">
+                 <ion-icon></ion-icon>
+                  Gallery
+                  
+               </button>
+             </ion-col>
+   
+         </ion-row>
+         <ion-row>
+
+            <ion-col text-center>
+              <img *ngIf="ImagePath!==''" height="300px" width="300px" src="{{ImagePath}}">
+            </ion-col>
+          </ion-row>
+         
+         <ion-row>
+             <ion-col col-6>
+               <button  ion-button block color="secondary" (click)="Save()">
+                 Save
+               </button>
+   
+             </ion-col>
+             
+             <ion-col col-6>
+                 <button ion-button block color="danger" (click)="Cancel()">
+                    Cancel
+                 </button>
+               </ion-col>
+           </ion-row>
+     </ion-grid>
+</ion-content>

@@ -1,0 +1,48 @@
+page-list {
+    ion-segment {
+        display: block;
+        white-space: nowrap;
+        font-size: 0;
+        overflow: auto;
+    
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+    
+        ion-segment-button.segment-button {
+            display: inline-block;
+            min-width: 100px;
+            width: auto;
+        }
+    }
+    
+    .imgfalt{
+        float: right;
+        display: block;
+    
+   
+        
+    }
+    
+    .nameowner{
+        margin-left: 40px;
+        margin-top: -26px;
+        color:#365899;
+        font-family: inherit;
+        font-weight: bold;
+        
+    }
+    .imgowner{
+        border-radius: 50%;
+    }
+    .bu{
+        float: right;
+        margin-top: -41px;
+    }
+    .search
+    {
+        width: 250px;
+    }
+}

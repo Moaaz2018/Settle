@@ -1,0 +1,38 @@
+
+<ion-header>
+  
+  <ion-navbar>
+    <ion-title>set-location-modal</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+    <agm-map [latitude]="BaseLocation.Latitude"
+             [longitude]="BaseLocation.Longitude"
+             [zoom]="15" 
+             (mapClick)="click($event)">
+  
+             <agm-marker 
+             *ngIf="LocationSet"
+             [latitude]="BaseLocation.Latitude"
+             [longitude]="BaseLocation.Longitude">
+            
+            </agm-marker>
+  
+    </agm-map>
+      <ion-row>
+          <ion-col col-6>
+            <button ion-button [disabled]="!LocationSet" color="secondary" block (click)="SetLocation()">
+             Set
+            </button>
+          </ion-col>
+          <ion-col col-6>
+              <button ion-button color="danger" block (click)="Cancel()">
+                Close
+              </button>
+            </ion-col>
+        </ion-row>
+  </ion-content>

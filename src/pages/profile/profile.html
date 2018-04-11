@@ -1,0 +1,35 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+        <img height="300px" width="250px" src="{{(profiledata | async)?.image}}">
+      </ion-item>
+      
+  
+    <div *ngFor="let item of estateList" (click)="goTopage(item)">
+        <img class="imgowner" height="30px" width="30px"src="{{(profiledata | async)?.image}}">
+          <p class="nameowner">{{(profiledata | async)?.firstName}} {{(profiledata | async)?.lastName}}</p>
+            <img class="imgfalt" height="80px" width="80px" [src]="item.Image" >
+              <h4>Estate Title : {{item.Title}}</h4>    
+              <h6>Price : {{item.Price}} </h6>
+              <h6>Address : {{item.Address}} </h6>
+              <hr>
+      
+    </div>
+    
+
+</ion-content>

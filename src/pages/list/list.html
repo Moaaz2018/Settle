@@ -1,0 +1,88 @@
+<!--
+  Generated template for the PostsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-menu [content]="mycontent">
+  <ion-content>
+    <ion-list>
+        <ion-item  (click)="gotoHome()">Home</ion-item>
+        <ion-item  (click)="gotoProfile()">Profile</ion-item>
+        <ion-item  (click)="logout()">Logout</ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]=""></ion-nav>
+<ion-header>
+
+  
+  <ion-toolbar>
+      <button ion-button menuToggle left>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+     
+      <ion-searchbar class="search" (ionInput)="getItems($event)" placeholder="search by address....."></ion-searchbar>
+      <button class="bu" ion-button icon-only (click)="addPage()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+     
+    </ion-toolbar>
+
+    <ion-segment [(ngModel)]="flats">
+      <ion-segment-button  value="" (ionSelect)="onSegmentSelected($event)"> 
+          All
+        </ion-segment-button>
+      <ion-segment-button  value="flat buy" (ionSelect)="onSegmentSelected($event)">
+        Flat Buy
+      </ion-segment-button>
+      <ion-segment-button value="flat rent" (ionSelect)="onSegmentSelected($event)">
+        Flat Rent
+      </ion-segment-button>
+      <ion-segment-button value="shop buy" (ionSelect)="onSegmentSelected($event)">
+          Shop Buy
+        </ion-segment-button>
+        <ion-segment-button value="shop rent" (ionSelect)="onSegmentSelected($event)">
+            Shop Rent
+          </ion-segment-button>
+    </ion-segment>
+      
+      
+
+</ion-header>
+
+
+
+<ion-content class="masters" padding>
+ 
+    
+    
+     
+    
+    
+      
+  
+    <div *ngFor="let item of estateList"  (click)="goTopage(item)">
+         <div *ngFor="let p of profileList">
+           <div *ngIf="p.UID==item.UID" >
+            <img class="imgowner" height="30px" width="30px"[src]="p.image">
+            <p class="nameowner">{{p.firstName}} {{p.lastName}}</p>
+           </div>
+          </div>
+        
+        
+      <img class="imgfalt" height="80px" width="80px" [src]="item.Image" >
+      <h4>Estate Title : {{item.Title}}</h4>    
+      <h6>Price : {{item.Price}} </h6>
+      <h6>Address : {{item.Address}} </h6>
+      <hr>
+      
+    </div>
+   
+  
+   
+  
+
+</ion-content>
